@@ -40,25 +40,13 @@ language-servers = ["tailwindcss-language-server"]
 [[language]]
 name             = "javascript"
 scope = "source.js"
-file-types       = ["js"]
+file-types       = ["js", "jsx", "mjs"]
 language-servers = ["typescript-language-server"]
 
 [[language]]
 scope = "source.ts"
 name             = "typescript"
-file-types       = ["ts"]
-language-servers = ["typescript-language-server"]
-
-[[language]]
-name             = "javascriptreact"
-file-types       = ["jsx"]
-scope = "source.jsx"
-language-servers = ["typescript-language-server"]
-
-[[language]]
-name             = "typescriptreact"
-file-types       = ["tsx"]
-scope = "source.tsx"
+file-types       = ["ts", "tsx"]
 language-servers = ["typescript-language-server"]
 
 # Go (with formatting on save)
@@ -79,3 +67,9 @@ indent             = { tab-width = 4, unit = "    " }
 language-servers   = ["clangd"]
 auto-format        = true
 formatter          = { command = "clang-format", args = ["--assume-filename", "$FILENAME"] }
+
+[[language]]
+name = "python"
+file-types       = ["py"]
+language-servers = [ "pyright" ]
+
