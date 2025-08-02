@@ -1,0 +1,16 @@
+theme = "github_dark"
+[editor]
+clipboard-provider = "pasteboard"
+default-yank-register = "+"
+
+
+[keys.select]
+"A-x" = "normal_mode"
+"Cmd-x" = "normal_mode"
+"esc" = "no_op"
+
+[keys.insert]
+"Cmd-x" = "normal_mode"
+"A-x" = "normal_mode"
+"esc" = "no_op"
+

@@ -1,0 +1,81 @@
+# ~/.config/helix/languages.toml
+
+# 1) Define all the servers you plan to use
+
+[language-server.tailwindcss-language-server]
+command = "tailwindcss-language-server"
+args    = ["--stdio"]
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args    = ["--stdio"]
+
+[language-server.gopls]
+command = "gopls"
+args    = ["-remote=auto"]
+
+[language-server.clangd]
+command = "clangd"
+
+# 2) Hook them up to filetypes / scopes
+
+# HTML + Tailwind
+[[language]]
+name             = "html"
+scope            = "text.html.basic"
+file-types       = ["html"]
+language-servers = [
+  "tailwindcss-language-server",
+  "vscode-html-language-server",
+]
+
+# CSS + Tailwind
+[[language]]
+name             = "css"
+scope            = "source.css"
+file-types       = ["css", "postcss"]
+language-servers = ["tailwindcss-language-server"]
+
+# JavaScript / TypeScript
+[[language]]
+name             = "javascript"
+scope = "source.js"
+file-types       = ["js"]
+language-servers = ["typescript-language-server"]
+
+[[language]]
+scope = "source.ts"
+name             = "typescript"
+file-types       = ["ts"]
+language-servers = ["typescript-language-server"]
+
+[[language]]
+name             = "javascriptreact"
+file-types       = ["jsx"]
+scope = "source.jsx"
+language-servers = ["typescript-language-server"]
+
+[[language]]
+name             = "typescriptreact"
+file-types       = ["tsx"]
+scope = "source.tsx"
+language-servers = ["typescript-language-server"]
+
+# Go (with formatting on save)
+[[language]]
+name             = "go"
+scope            = "source.go"
+file-types       = ["go"]
+language-servers = ["gopls"]
+auto-format      = true
+
+# C / C++
+[[language]]
+name               = "cpp"
+scope              = "source.cpp"
+file-types         = ["c", "cpp", "cc", "cxx", "h", "hpp"]
+block-comment-tokens = { start = "/*", end = "*/" }
+indent             = { tab-width = 4, unit = "    " }
+language-servers   = ["clangd"]
+auto-format        = true
+formatter          = { command = "clang-format", args = ["--assume-filename", "$FILENAME"] }

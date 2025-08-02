@@ -1,0 +1,31 @@
+# Set the 'alt' key as the main modifier key (mod).
+# Other options: 'cmd', 'ctrl', 'shift'
+default-root-container-layout = 'tiles'
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = false
+accordion-padding = 30
+default-root-container-orientation = 'horizontal'
+[mode.main.binding]
+alt-g = 'exec-and-forget aerospace-scratchpad show Ghostty'
+alt-v = 'exec-and-forget aerospace-scratchpad show VSCodium'
+alt-c = 'exec-and-forget aerospace-scratchpad show ChatGPT'
+alt-f = 'exec-and-forget aerospace-scratchpad show Firefox'
+alt-d = 'exec-and-forget aerospace-scratchpad show Discord'
+alt-s = 'exec-and-forget aerospace-scratchpad show Spotify' 
+alt-q = 'exec-and-forget aerospace-scratchpad show Finder'
+alt-b = 'exec-and-forget aerospace-scratchpad show Books'
+
+alt-o = 'exec-and-forget aerospace-scratchpad show Obsidian'
+
+alt-shift-p = 'move-node-to-workspace 9'
+
+alt-shift-left  = ['flatten-workspace-tree', 'layout tiles', 'layout horizontal', 'move left',  'balance-sizes']
+alt-shift-right = ['flatten-workspace-tree', 'layout tiles', 'layout horizontal', 'move right', 'balance-sizes']
+alt-z = 'fullscreen'    
+alt-cmd-0 = ['flatten-workspace-tree', 'layout tiles', 'layout horizontal', 'balance-sizes']
+
+
+
+
+
+
