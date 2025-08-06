@@ -1,0 +1,177 @@
+# Vercel 2024 — Helix theme (ported from your VS Code JSON)
+# Place in: ~/.config/helix/themes/vercel_2024.toml
+
+# You can optionally inherit from a base theme and override below, e.g.:
+# inherits = "base16_default"
+
+# ── UI ──────────────────────────────────────────────────────────────────────────
+"ui.background"              = { bg = "bg" }
+"ui.text"                    = "fg"
+"ui.text.inactive"           = "muted_fg"
+"ui.text.info"               = "blue"
+"ui.cursor"                  = { fg = "bg", bg = "fg" }
+"ui.cursor.primary"          = { fg = "bg", bg = "fg" }
+"ui.cursor.match"            = { bg = "bracket_bg" }
+"ui.selection"               = { bg = "selection_bg" }
+"ui.selection.primary"       = { bg = "selection_bg" }
+"ui.highlight"               = { bg = "line_highlight_bg" }
+"ui.cursorline.primary"      = { bg = "line_highlight_bg" }
+"ui.virtual.whitespace"      = "whitespace"
+"ui.virtual.indent-guide"    = "indent_guide"
+
+# Line numbers & gutter
+"ui.linenr"                  = "line_nr_fg"
+"ui.linenr.selected"         = "fg"
+"ui.gutter"                  = { bg = "bg" }
+"ui.gutter.selected"         = { bg = "bg" }
+
+# Window & borders
+"ui.window"                  = "border"
+"ui.popup"                   = { fg = "fg", bg = "popup_bg", border = { color = "border" } }
+"ui.popup.info"              = { fg = "fg", bg = "panel_bg", border = { color = "border" } }
+
+# Menus (completion)
+"ui.menu"                    = { fg = "fg", bg = "menu_bg" }
+"ui.menu.selected"           = { bg = "hover_bg", fg = "fg" }
+"ui.menu.scroll"             = { fg = "scroll_thumb", bg = "scroll_track" }
+
+# Buffer line (tabs)
+"ui.bufferline.background"   = { bg = "tab_bg_inactive", fg = "tab_fg_inactive" }
+"ui.bufferline"              = { bg = "tab_bg_inactive", fg = "tab_fg_inactive" }
+"ui.bufferline.active"       = { bg = "tab_bg_active",   fg = "tab_fg_active" }
+
+# Statusline
+"ui.statusline"              = { fg = "fg",       bg = "status_bg",  border = { color = "border" } }
+"ui.statusline.inactive"     = { fg = "muted_fg", bg = "panel_bg",   border = { color = "border" } }
+
+# Inlay hints
+"ui.virtual.inlay-hint"            = { fg = "inlay_fg",  bg = "inlay_bg" }
+"ui.virtual.inlay-hint.parameter"  = { fg = "inlay_param_fg", bg = "inlay_bg" }
+"ui.virtual.inlay-hint.type"       = { fg = "inlay_type_fg",  bg = "inlay_bg" }
+
+# Diagnostics
+"diagnostic.hint"            = "cyan"
+"diagnostic.info"            = "blue"
+"diagnostic.warning"         = "orange"
+"diagnostic.error"           = "red"
+"warning"                    = "orange"   # gutter signs
+"info"                       = "blue"
+"hint"                       = "cyan"
+"error"                      = "red"
+
+# Diff (editor & gutter)
+"diff.plus"                  = "green"
+"diff.minus"                 = "red"
+"diff.delta"                 = "cyan"
+"diff.plus.gutter"           = "green"
+"diff.minus.gutter"          = "red"
+"diff.delta.gutter"          = "cyan"
+"diff.conflict"              = "yellow"
+
+# ── Syntax (Tree-sitter scopes) ────────────────────────────────────────────────
+# General
+"comment"                    = "comment"
+"comment.documentation"      = "comment"
+"string"                     = "green_str"
+"string.special.url"         = "blue"
+"constant.numeric"           = "fg"
+"constant.boolean"           = "fg"
+"constant.character.escape"  = "fg"
+"constant"                   = "blue"
+
+"keyword"                    = "magenta"
+"keyword.control"            = "magenta"
+"keyword.import"             = "magenta"
+"keyword.return"             = "magenta"
+"keyword.exception"          = "magenta"
+"keyword.storage"            = "magenta"
+"keyword.storage.modifier"   = "magenta"
+"keyword.operator"           = "magenta"
+"operator"                   = "magenta"
+"keyword.directive"          = "cyan"     # preprocessor
+
+"type"                       = "yellow"
+"type.builtin"               = "yellow"
+"type.enum"                  = "yellow"
+"type.parameter"             = "yellow"
+
+"function"                   = "purple"
+"function.method"            = "blue"
+"function.builtin"           = "purple"
+"function.macro"             = "blue"
+"constructor"                = "purple"
+
+"variable"                   = "fg"
+"variable.builtin"           = "cyan"
+"variable.parameter"         = "fg"
+"variable.other.member"      = "blue"     # properties
+"label"                      = "cyan"
+"namespace"                  = "yellow"
+"tag"                        = "green_str"
+"attribute"                  = "purple"
+
+"punctuation"                = "fg"
+"punctuation.bracket"        = "fg"
+"punctuation.delimiter"      = "fg"
+
+# Markup (Markdown/etc.)
+"markup.heading"             = "yellow"
+"markup.bold"                = "yellow"
+"markup.italic"              = "cyan"
+"markup.link.url"            = "blue"
+"markup.link.label"          = "fg"
+"markup.list"                = "yellow"
+"markup.quote"               = "panel_bg"
+"markup.raw"                 = "fg"
+
+# ── Palette (from your VS Code theme) ──────────────────────────────────────────
+[palette]
+# Core
+bg                 = "#000000"
+fg                 = "#EDEDED"
+muted_fg           = "#A3A3A3"
+panel_bg           = "#0D0D0D"
+popup_bg           = "#000000"
+menu_bg            = "#000000"
+hover_bg           = "#212121"
+line_highlight_bg  = "#0D0D0D"
+selection_bg       = "#EDEDED33"      # uses alpha if supported by your terminal
+border             = "#212121"
+whitespace         = "#2B2B2B"
+indent_guide       = "#212121"
+
+# Tabs / bufferline
+tab_bg_active      = "#000000"
+tab_fg_active      = "#EDEDED"
+tab_bg_inactive    = "#0D0D0D"
+tab_fg_inactive    = "#A3A3A3"
+
+# Scroll areas (menus/pickers)
+scroll_thumb       = "#212121"
+scroll_track       = "#0D0D0D"
+
+# Status
+status_bg          = "#000000"
+
+# Bracket match
+bracket_bg         = "#171717"
+
+# Gutter & line numbers
+line_nr_fg         = "#2B2B2B"
+
+# Diagnostics / accents
+red                = "#D14D41"
+orange             = "#F27F35"
+yellow             = "#E5B800"
+blue               = "#47A8FF"
+cyan               = "#4CC0BA"
+green              = "#00CA51"
+green_str          = "#00CA51"
+purple             = "#C372FC"
+magenta            = "#FF4C8D"
+
+# Inlay hints
+inlay_bg           = "#212121"
+inlay_fg           = "#A3A3A3"
+inlay_param_fg     = "#EDEDED"  # parameter (you used bright fg)
+inlay_type_fg      = "#EDEDED"  # type

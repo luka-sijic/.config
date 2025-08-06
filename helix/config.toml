@@ -1,4 +1,4 @@
-theme = "github_dark"
+theme = "vercel"
 [editor]
 clipboard-provider = "pasteboard"
 default-yank-register = "+"

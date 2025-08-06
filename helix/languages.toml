@@ -46,7 +46,7 @@ language-servers = ["typescript-language-server"]
 [[language]]
 scope = "source.ts"
 name             = "typescript"
-file-types       = ["ts", "tsx"]
+file-types       = ["ts"]
 language-servers = ["typescript-language-server"]
 
 # Go (with formatting on save)
@@ -72,4 +72,11 @@ formatter          = { command = "clang-format", args = ["--assume-filename", "$
 name = "python"
 file-types       = ["py"]
 language-servers = [ "pyright" ]
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+language-servers = ["typescript-language-server"]
+
 
