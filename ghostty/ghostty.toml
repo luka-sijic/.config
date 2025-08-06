@@ -1,5 +1,5 @@
 [colors]
-palette = "classic"
+theme = "catppuccin-frappe"
 
 [window]
 background-opacity = 1.0  # fully opaque
@@ -10,3 +10,4 @@ family = "JetBrainsMono Nerd Font"
 # family = "FiraCode Nerd Font"
 # family = "MesloLGS Nerd Font"
 size = 14
+
