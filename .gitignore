@@ -3,6 +3,7 @@
 !.gitignore
 
 !fish/
+!fish/**
 !helix/
 !clangd/
 !btop/
