@@ -63,7 +63,7 @@ name               = "cpp"
 scope              = "source.cpp"
 file-types         = ["c", "cpp", "cc", "cxx", "h", "hpp"]
 block-comment-tokens = { start = "/*", end = "*/" }
-indent             = { tab-width = 4, unit = "    " }
+indent             = { tab-width = 2, unit = "  " }
 language-servers   = ["clangd"]
 auto-format        = true
 formatter          = { command = "clang-format", args = ["--assume-filename", "$FILENAME"] }
@@ -80,3 +80,10 @@ file-types = ["tsx"]
 language-servers = ["typescript-language-server"]
 
 
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman"]

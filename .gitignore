@@ -1,9 +1,11 @@
-fish/
-iterm2/
-gcloud/
-qBittorrent/
-wezterm/
-btop/
-helix/runtime
+*
+
+!.gitignore
+
+!fish/
+!helix/
+!clangd/
+!btop/
+!ghostty/
 
 
