@@ -7,3 +7,5 @@ fish
 starship
 btop
 tree
+
+infocmp -x | ssh root@alpha tic -x -
