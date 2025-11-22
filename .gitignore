@@ -6,6 +6,7 @@
 !helix/
 !clangd/
 !btop/
+!ghostty/
 !ghostty/**
 
 

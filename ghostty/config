@@ -1,0 +1,19 @@
+# --- Fonts ---
+# syntax: key = value
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# --- Window ---
+# No [brackets] allowed!
+window-padding-x = 10
+window-padding-y = 10
+macos-titlebar-style = transparent
+
+# --- Background ---
+# Comments must use #. Do not put quotes around numbers.
+background-opacity = 1.0
+# carbonfox GitHub-Dark-Default Mathias Mirage NvimDark
+theme = carbonfox
+
+# --- Shell ---
+command = /opt/homebrew/bin/fish
