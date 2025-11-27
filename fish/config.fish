@@ -8,6 +8,7 @@ if status is-interactive
     abbr --add g++ 'g++ -std=c++17'
     abbr --add alpha 'ssh -i ~/Documents/keys/as_private.pem root@alpha.c'
     abbr --add beta 'ssh -i ~/Documents/keys/as_private.pem root@beta.c'
+    abbr --add co 'codium .'
     abbr --add py python3
     starship init fish | source
 end

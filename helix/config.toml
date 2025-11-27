@@ -1,6 +1,6 @@
-theme = "vercel"
+theme = "carbonfox"
 [editor]
-clipboard-provider = "pasteboard"
+clipboard-provider = "termcode"
 default-yank-register = "+"
 
 
