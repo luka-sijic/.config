@@ -3,9 +3,12 @@
 !.gitignore
 
 !fish/
+!.tmux.conf
 !fish/**
 !helix/
 !clangd/
+!tmux/
+!tmux/**
 !btop/
 !ghostty/
 !ghostty/**
