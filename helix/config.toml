@@ -3,14 +3,15 @@ theme = "carbonfox"
 clipboard-provider = "termcode"
 default-yank-register = "+"
 
+[keys.normal]
+"A-s" = ":w"
+
 
 [keys.select]
 "A-x" = "normal_mode"
-"Cmd-x" = "normal_mode"
 "esc" = "no_op"
 
 [keys.insert]
-"Cmd-x" = "normal_mode"
 "A-x" = "normal_mode"
 "esc" = "no_op"
 

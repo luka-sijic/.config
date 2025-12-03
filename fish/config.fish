@@ -9,6 +9,12 @@ if status is-interactive
     abbr --add alpha 'ssh -i ~/Documents/keys/as_private.pem root@alpha.c'
     abbr --add beta 'ssh -i ~/Documents/keys/as_private.pem root@beta.c'
     abbr --add co 'codium .'
+    abbr --add ga 'git add'
+    abbr --add gc 'git commit -m'
+    abbr --add gl 'git pull'
+    abbr --add gp 'git push'
+    abbr --add gs 'git status'
+    abbr --add cp 'cp ~/Documents/repos/astro/leet/template.cpp ./main.cpp'
     abbr --add py python3
     starship init fish | source
 end
