@@ -14,7 +14,7 @@ if status is-interactive
     abbr --add gl 'git pull'
     abbr --add gp 'git push'
     abbr --add gs 'git status'
-    abbr --add cp 'cp ~/Documents/repos/astro/leet/template.cpp ./main.cpp'
+    abbr --add leet 'cp ~/Documents/repos/astro/leet/template.cpp ./main.cpp'
     abbr --add py python3
     starship init fish | source
 end

@@ -18,3 +18,4 @@ theme = carbonfox
 # --- Shell ---
 command = /opt/homebrew/bin/fish
 term = xterm-256color
+
