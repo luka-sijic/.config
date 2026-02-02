@@ -1,122 +1,104 @@
--- ~/.config/nvim/init.lua or init file depending on your setup
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+-- ============================================================
+-- Minimal Neovim config (no plugins)
+-- ============================================================
 
--- Install using lazy.nvim or packer (this example assumes lazy.nvim)
-
--- 1. Plugin Setup
-require("lazy").setup({
-  { "williamboman/mason.nvim", build = ":MasonUpdate", config = true },
-  { "williamboman/mason-lspconfig.nvim", config = true },
-  { "neovim/nvim-lspconfig" },
-  { "nvim-tree/nvim-tree.lua" },
-  { "nvim-tree/nvim-web-devicons" },
-  { "hrsh7th/nvim-cmp" },                -- completion engine
-  { "hrsh7th/cmp-nvim-lsp" },            -- LSP source for nvim-cmp
-  { "hrsh7th/cmp-buffer" },              -- buffer source
-  { "hrsh7th/cmp-path" },                -- path source
-  { "L3MON4D3/LuaSnip" },                -- snippet engine
-  { "saadparwaiz1/cmp_luasnip" },
-  {"nvim-treesitter/nvim-treesitter",build = ":TSUpdate"},
-  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-  {"kawre/leetcode.nvim",build = ":TSUpdate html",dependencies = "nvim-lua/plenary.nvim","MunifTanjim/nui.nvim","nvim-telescope/telescope.nvim","nvim-tree/nvim-web-devicons",
-  },
-  cmd = "Leet",               -- lazy-load when you run :Leet (recommended)
-  opts = {
-    -- Start in the language you use most
-    lang = "golang",          -- or "cpp", "python3", etc.
-    picker = { provider = "telescope" }, -- use the picker you installed
-    plugins = {
-      -- If you want to run inside your normal session (without a blank Neovim)
-      -- turn this on; otherwise keep false and start in an empty session.
-      non_standalone = true,
-    },
-  },
-})
-
--- 2. Mason + LSP Configuration
-require("mason").setup()
-
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "clangd",       -- C/C++
-    "gopls",         -- Go
-  },
-})
-
-
-local lspconfig = require("lspconfig")
-
-local servers = {
-  clangd = {},
-  gopls = {},
-}
-
-for server, config in pairs(servers) do
-  lspconfig[server].setup(config)
-end
-
--- 3. Editor Options
-vim.opt.tabstop = 4       -- Number of visual spaces per TAB
-vim.opt.shiftwidth = 4    -- Indent width
-vim.opt.expandtab = true  -- Tabs are spaces
-vim.opt.number = true     -- Show line numbers
-
--- 4. File Explorer Setup
-require("nvim-tree").setup({
-  view = {
-    side = "right",
-    width = 30,
-  },
-  renderer = {
-    icons = {
-      show = {
-        git = false,
-        folder = true,
-        file = true,
-        folder_arrow = true,
-      },
-    },
-  },
-})
+-- Leader
 vim.g.mapleader = " "
--- Optional: Map key to toggle file explorer
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.g.maplocalleader = " "
 
--- Replace Ctrl-C mapping to use Command-C on macOS GUI (maps to Escape)
-vim.keymap.set("i", "<C-c>", "<Esc>", { noremap = true, silent = true })
+-- Core UI
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.wrap = false
 
--- Optional: cycle windows with Tab
-vim.keymap.set('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
-vim.keymap.set('n', '<S-Tab>', '<C-w>W', { noremap = true, silent = true })
+-- Editing
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
 
--- 5. Enable true color if using terminal
--- 6. Autocompletion Setup
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<CR>"]     = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip'  },
-  }, {
-    { name = 'buffer'  },
-    { name = 'path'    },
-  }),
+-- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+-- Splits
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Responsiveness
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 400
+
+-- Clipboard + undo
+vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = true
+
+-- Diagnostics (built-in)
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  float = { border = "rounded" },
 })
+
+-- Keymaps helper
+local map = function(mode, lhs, rhs, desc)
+  vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc })
+end
+
+-- Save/quit
+map("n", "<leader>w", "<cmd>w<cr>", "Save")
+map("n", "<leader>q", "<cmd>q<cr>", "Quit")
+map("n", "<leader>/", "<cmd>nohlsearch<cr>", "Clear search highlight")
+
+-- Diagnostics navigation
+map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
+map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+map("n", "<leader>e", vim.diagnostic.open_float, "Diagnostic float")
+
+-- LSP keymaps (only active when an LSP attaches)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local buf = ev.buf
+    local function bmap(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, { buffer = buf, silent = true, desc = desc })
+    end
+
+    bmap("n", "gd", vim.lsp.buf.definition, "Go to definition")
+    bmap("n", "gr", vim.lsp.buf.references, "References")
+    bmap("n", "K", vim.lsp.buf.hover, "Hover")
+    bmap("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
+    bmap("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
+    bmap("n", "<leader>f", function()
+      vim.lsp.buf.format({ async = true })
+    end, "Format")
+  end,
+})
+
+-- ------------------------------------------------------------
+-- Optional: basic LSP setup (requires you to install servers)
+-- ------------------------------------------------------------
+-- If you don't want LSP at all, delete everything below.
+
+local lsp = vim.lsp
+local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+
+if lspconfig_ok then
+  -- Example servers. Install these on your system:
+  --   clangd, gopls, rust-analyzer, pyright, typescript-language-server
+  lspconfig.clangd.setup({})
+  lspconfig.gopls.setup({})
+  lspconfig.rust_analyzer.setup({})
+  lspconfig.pyright.setup({})
+  lspconfig.ts_ls.setup({})
+else
+  -- If you want LSP with zero plugins, remove lspconfig usage entirely
+  -- and use `:LspStart <server>` with Neovim's builtin LSP configs (advanced).
+end
+

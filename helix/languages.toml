@@ -14,9 +14,6 @@ args    = ["--stdio"]
 command = "gopls"
 args    = ["-remote=auto"]
 
-[language-server.clangd]
-command = "clangd"
-
 # 2) Hook them up to filetypes / scopes
 
 # HTML + Tailwind
@@ -28,6 +25,8 @@ language-servers = [
   "tailwindcss-language-server",
   "vscode-html-language-server",
 ]
+formatter   = { command = "npx", args = ["prettier", "--stdin-filepath", "file.html"] }
+auto-format = true
 
 # CSS + Tailwind
 [[language]]
@@ -47,7 +46,10 @@ language-servers = ["typescript-language-server"]
 scope = "source.ts"
 name             = "typescript"
 file-types       = ["ts"]
+formatter = { command = "npx", args = ["prettier", "--stdin-filepath", "file.tsx"] }
+auto-format = true
 language-servers = ["typescript-language-server"]
+
 
 # Go (with formatting on save)
 [[language]]
@@ -57,6 +59,9 @@ file-types       = ["go"]
 language-servers = ["gopls"]
 auto-format      = true
 
+[language-server.clangd]
+command = "/opt/homebrew/opt/llvm/bin/clangd"
+args = ["--background-index", "--clang-tidy", "--header-insertion=never"]
 # C / C++
 [[language]]
 name               = "cpp"
@@ -66,7 +71,11 @@ block-comment-tokens = { start = "/*", end = "*/" }
 indent             = { tab-width = 2, unit = "  " }
 language-servers   = ["clangd"]
 auto-format        = true
-formatter          = { command = "clang-format", args = ["--assume-filename", "$FILENAME"] }
+
+[language.formatter]
+# Point this to the Homebrew version as well
+command = "/opt/homebrew/opt/llvm/bin/clang-format"
+args = ["--assume-filename", "%{buffer_name}"]
 
 [[language]]
 name = "python"

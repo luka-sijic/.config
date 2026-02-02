@@ -2,10 +2,13 @@ theme = "carbonfox"
 [editor]
 clipboard-provider = "termcode"
 default-yank-register = "+"
+auto-completion = false
 
 [keys.normal]
 "A-s" = ":w"
-
+"C-s" = [
+  ":insert-output echo '### Productivity\n\n### Chores\n\n### Amazon\n'"
+]
 
 [keys.select]
 "A-x" = "normal_mode"
